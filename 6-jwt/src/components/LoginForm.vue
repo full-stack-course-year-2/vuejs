@@ -19,14 +19,23 @@ export default {
     password: "",
   }),
   methods: {
-    login() {
-      this.$store.dispatch("login", {
+    async login() {
+      await this.$store.dispatch("user/login", {
         username: this.username,
         password: this.password,
       });
+
+      const loggedInSuccesful = this.$store.state.user.loggedInUser.id;
+      if (loggedInSuccesful) {
+        await this.$store.dispatch("todo/fetchTodos", {
+          userId: loggedInSuccesful,
+        });
+
+        this.$router.push("todo");
+      }
     },
     getUsers() {
-      this.$store.dispatch("getUsers");
+      this.$store.dispatch("user/getUsers");
     },
   },
 };

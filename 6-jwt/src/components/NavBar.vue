@@ -18,17 +18,17 @@
 export default {
   methods: {
     btnClick(path) {
-      console.log(path);
       this.$router.push(path);
     },
     logout() {
-      this.$store.commit("setLoggedInUser", {});
+      this.$store.commit("user/setLoggedInUser", {});
       window.localStorage.removeItem("token");
+      this.$router.push("login");
     },
   },
   computed: {
     loggedInUser() {
-      return this.$store.getters.getLoggedInUser;
+      return this.$store.getters["user/getLoggedInUser"];
     },
   },
 };

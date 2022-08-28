@@ -5,6 +5,7 @@ import AboutView from "../views/AboutView";
 import ErrorView from "../views/ErrorView";
 import UsersView from "../views/UsersView";
 import LoginView from "../views/LoginView";
+import TodoView from "../views/TodoView";
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ const routes = [
     path: "/login",
     name: "login",
     component: LoginView,
+  },
+  {
+    path: "/todo",
+    name: "todo",
+    component: TodoView,
   },
   {
     path: "*",
